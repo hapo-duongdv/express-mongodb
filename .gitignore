@@ -1,0 +1,8 @@
+node_modules
+public/swagger.json
+src/api/logs/*
+src/api/routes/routes.ts
+
+.env
+
+dist
