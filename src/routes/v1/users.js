@@ -1,16 +1,20 @@
 const UserModel = require("../../models/user.model");
 const UserController = require("../../controllers/user.constroller");
-const express = require('express');
+const UserMiddleware = require("../../middlewares/user");
+const express = require("express");
 const router = express.Router();
 
-router.post("/post", UserController.create);
+const { validateBodyCreate } = UserMiddleware;
+const { create, update, findAll, findOne, softDelete } = UserController;
 
-router.get("/getAll", UserController.findAll);
+router.post("/post", validateBodyCreate, create);
 
-router.get("/getOne/:id", UserController.findOne);
+router.get("/getAll", findAll);
 
-router.patch("/update/:id", UserController.update);
+router.get("/getOne/:id", findOne);
 
-router.delete("/delete/:id", UserController.delete);
+router.patch("/update/:id", update);
+
+router.delete("/delete/:id", softDelete);
 
 module.exports = router;

@@ -46,7 +46,7 @@ exports.update = async (req, res) => {
   }
 };
 
-exports.delete = async (req, res) => {
+exports.softDelete = async (req, res) => {
   try {
     const id = req.params.id;
     const data = await UserModel.findByIdAndDelete(id);
